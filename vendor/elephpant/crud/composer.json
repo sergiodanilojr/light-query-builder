@@ -1,0 +1,34 @@
+{
+  "name": "elephpant/crud",
+  "description": "CRUD is a abstraction of PDO for simplify to simplify reading, writing, updating and removing data from the Database",
+  "keywords": [
+    "Sergio Danilo Jr",
+    "database",
+    "crud",
+    "orm",
+    "query builder",
+    "sql",
+    "pdo",
+    "elephpant",
+    "elephant"
+  ],
+  "homepage": "https://www.sergiodanilojr.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sérgio Danilo Jr.",
+      "email": "sergiodaniojr@hotmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ElePHPant\\": "src"
+    }
+  }
+}

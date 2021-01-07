@@ -1,0 +1,36 @@
+{
+  "name": "elephpant/light-query-builder",
+  "description": "Light Query Builder's a simple query builder made for simple applications, but it's powerful",
+  "keywords": [
+    "Sergio Danilo Jr",
+    "database",
+    "crud",
+    "orm",
+    "query builder",
+    "light query builder",
+    "sql",
+    "pdo",
+    "elephpant",
+    "elephant"
+  ],
+  "homepage": "https://www.sergiodanilojr.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sérgio Danilo Jr.",
+      "email": "sergiodaniojr@hotmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "elephpant/crud":"1.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ElePHPant\\": "src"
+    }
+  }
+}

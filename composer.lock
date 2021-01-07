@@ -1,0 +1,77 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9e1ef6d34989df4994dd97769e5157ab",
+    "packages": [
+        {
+            "name": "elephpant/crud",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sergiodanilojr/crud.git",
+                "reference": "2c38411000e2ef68ed9beec4b571434595ec8aba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sergiodanilojr/crud/zipball/2c38411000e2ef68ed9beec4b571434595ec8aba",
+                "reference": "2c38411000e2ef68ed9beec4b571434595ec8aba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElePHPant\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sérgio Danilo Jr.",
+                    "email": "sergiodaniojr@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CRUD is a abstraction of PDO for simplify to simplify reading, writing, updating and removing data from the Database",
+            "homepage": "https://www.sergiodanilojr.com.br",
+            "keywords": [
+                "ElePHPant",
+                "crud",
+                "database",
+                "elephant",
+                "orm",
+                "pdo",
+                "query builder",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/sergiodanilojr/crud/issues",
+                "source": "https://github.com/sergiodanilojr/crud/tree/1.0.0"
+            },
+            "time": "2021-01-07T01:45:34+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^7.1",
+        "ext-json": "*",
+        "ext-pdo": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
