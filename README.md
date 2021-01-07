@@ -27,9 +27,12 @@ Primeiramente Light Query Builder é Maravilhoso. E com ele você pode construir
 
 ###### BEFORE INSTALL!
 
-For you work with this component, is important work with a component like ```bash vlucas/dotenv``` for you set your enviroment variables;
+For you work with this component, is important work with a component like ```vlucas/dotenv``` for you set your enviroment variables;
+
 
 ````dotenv
+DB_DRIVER="mysql"
+DB_PORT="3306"
 DB_HOST="your_database_host"
 DB_USER="root"
 DB_PASSWORD="passworddb"
@@ -39,7 +42,7 @@ DB_NAME="elephpant"
 
 ## Installation
 
-light-query-builder is available via Composer:
+Ligh Query Builder is available via Composer:
 
 ```bash
 "elephpant/light-query-builder": "*"
@@ -51,8 +54,9 @@ or run
 composer require elephpant/light-query-builder
 ```
 
-#### Methods
+## Documentation
 
+### Quick Start
 ```php
 <?php
 
@@ -60,28 +64,38 @@ require __DIR__ . "/vendor/autoload.php";
 
 use ElePHPant\LightQueryBuilder;
 
-$lightQB = (new LightQueryBuilder())::setTable("users")
-    ->setFetchClass(stdClass::class);
+$lightQB = (new LightQueryBuilder())::setTable("users")->setFetchClass(stdClass::class);
+```
 
-/* Select */
+
+### Select
+```php
 $select = $lightQB->select();
 //Returns 'SELECT * FROM users'
 
 $selectWithColumns = $lightQB->select("fullname, email");
 //Returns 'SELECT fullname, email FROM users';
+```
 
-/* Where */
+
+### Where
+```php
 $where = $select->where("gender = :g", "g=male");
 //Returns 'SELECT * FROM users WHERE gender = :g' -> working with bind param in PDO
+```
 
-/* AND OR BETWEEN */
+### Operators AND OR BETWEEN
+```php
 $where->and("id >=2")->or("id <= 10");
 //Returns 'SELECT * FROM users WHERE gender = :g AND id >= 2 OR id <= 10'
 
 $between = $select->where("DATE(birth)")->between("'2020-03-17'", "'2020-04-01'");
 //Returns 'SELECT * FROM users WHERE DATE(birth) BETWEEN '2020-03-17' AND '2020-04-01''
+```
 
-/* JOINs */
+
+### JOINs
+```php
 $lightQB->join("fullname", "clients", "client.user=users.id", LightQueryBuilder::INNER_JOIN);
 //Returns 'SELECT fullname FROM users INNER JOIN clients ON client.user=users.id'
 
@@ -89,44 +103,62 @@ $lightQB->join("fullname", "clients", "client.user=users.id", LightQueryBuilder:
 //Returns 'SELECT fullname FROM users RIGHT JOIN clients ON client.user=users.id'
 
 //[...]
+```
 
-/* Limit and Offset */
+
+###Limit and Offset
+```php
 $select->limit(3)->offset(2);
 //Returns 'SELECT * FROM users LIMIT 3 OFFSET 2'
+```
 
-/* Count */
+###Count */
+```php
 $select->count();
 //Returns all RowCounts of the consult
+```
 
-/* Match Against */
+
+###Match Against
+```php
 $lightQB->match("fullname, email", "Pedro", true);
 //Returns the result of alll users that match with the fullname or email with 'Pedro'.
+```
 
-/* Write  your own Query*/
+###Write  your own Query
+```php
 $lightQB->toQuery("
     SELECT * FROM my_table 
     WHERE id = 2
 ")->limit(2)->offset(1);
+```
 
+##CRUD
 
-/* CRUD */
-
-//Create
+###Create
+```php
 $create = $lightQB->create(array(...));
+```
 
-//Featching Data
+###Featching Data (Read)
+```php
 $select->get(); //Like that it'll bring only one result (first) [object]
 $select->get(true); //Like that it'll bring all results [array]
+```
 
-//Update
+###Update
+```php
 $update = $lightQB->update(array(...), "WHERE id = :id", "id=2");
+```
 
-//Delete
+###Delete
+```php
 $lightQB->delete("WHERE id = :id", "id=2");
+```
 
-/* Debugging */
+##Debugging
+```php
 var_dump($lightQB->getFail(), $lightQB->getQuery());
-
 ```
 
 ### LightQueryBuilder's Extensible
@@ -173,7 +205,6 @@ class MyQueryBuilder extends LightQueryBuilder
 
 }
 ````
-
 
 ## Contributing
 
