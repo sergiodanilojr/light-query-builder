@@ -1,4 +1,4 @@
-# light-query-builder @ElePHPant
+# Light Query Builder @ElePHPant
 
 [![Maintainer](http://img.shields.io/badge/maintainer-@sergiodanilojr-blue.svg?style=flat-square)](https://twitter.com/sergiodanilojr)
 [![Source Code](http://img.shields.io/badge/source-elephpant/light-query-builder-blue.svg?style=flat-square)](https://github.com/sergiodanilojr/light-query-builder)
