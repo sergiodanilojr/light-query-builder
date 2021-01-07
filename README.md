@@ -106,26 +106,26 @@ $lightQB->join("fullname", "clients", "client.user=users.id", LightQueryBuilder:
 ```
 
 
-###Limit and Offset
+### Limit and Offset
 ```php
 $select->limit(3)->offset(2);
 //Returns 'SELECT * FROM users LIMIT 3 OFFSET 2'
 ```
 
-###Count */
+### Count */
 ```php
 $select->count();
 //Returns all RowCounts of the consult
 ```
 
 
-###Match Against
+### Match Against
 ```php
 $lightQB->match("fullname, email", "Pedro", true);
 //Returns the result of alll users that match with the fullname or email with 'Pedro'.
 ```
 
-###Write  your own Query
+### Write  your own Query
 ```php
 $lightQB->toQuery("
     SELECT * FROM my_table 
@@ -133,30 +133,30 @@ $lightQB->toQuery("
 ")->limit(2)->offset(1);
 ```
 
-##CRUD
+## CRUD
 
-###Create
+### Create
 ```php
 $create = $lightQB->create(array(...));
 ```
 
-###Featching Data (Read)
+### Featching Data (Read)
 ```php
 $select->get(); //Like that it'll bring only one result (first) [object]
 $select->get(true); //Like that it'll bring all results [array]
 ```
 
-###Update
+### Update
 ```php
 $update = $lightQB->update(array(...), "WHERE id = :id", "id=2");
 ```
 
-###Delete
+### Delete
 ```php
 $lightQB->delete("WHERE id = :id", "id=2");
 ```
 
-##Debugging
+## Debugging
 ```php
 var_dump($lightQB->getFail(), $lightQB->getQuery());
 ```
