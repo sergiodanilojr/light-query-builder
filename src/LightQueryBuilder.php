@@ -218,8 +218,7 @@ class LightQueryBuilder
     public function get(bool $all = false)
     {
         $class = $this->class ?? \stdClass::class;
-        $crud = new CRUD();
-        $crud->setQuery($this->query);
+        $crud = $this->crud()->setQuery($this->query);
 
         if ($this->params) {
             $crud->setParams($this->params);
