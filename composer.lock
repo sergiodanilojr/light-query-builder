@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "elephpant/crud",
-            "version": "1.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sergiodanilojr/crud.git",

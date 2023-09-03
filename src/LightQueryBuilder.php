@@ -1,8 +1,6 @@
 <?php
 
-
 namespace ElePHPant;
-
 
 /**
  * Class LightQueryBuilder
@@ -34,7 +32,7 @@ class LightQueryBuilder
     /**
      * @var
      */
-    private static $table;
+    private $table;
     /**
      * @var
      */
@@ -74,14 +72,25 @@ class LightQueryBuilder
      */
     public $fail;
 
+    private array $config;
+
+    public function __construct(array $config)
+    {
+        $this->config = $config;
+    }
+
+    public static function bootstrap(array $config, string $table)
+    {
+        return (new self($config))->setTable($table);
+    }
+
     /**
      * @param string $table
-     * @return static
      */
-    public static function setTable(string $table)
+    public function setTable(string $table):self
     {
-        self::$table = $table;
-        return new static();
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -327,8 +336,9 @@ class LightQueryBuilder
      */
     private function crud()
     {
-        $crud = (new CRUD())::setTable(self::$table);
-        $crud->setQuery($this->query);
+        $crud = CRUD::bootstrap($this->config)
+            ->setTable($this->table)
+            ->setQuery($this->query);
 
         if ($this->params) {
             $crud->setParams($this->params);
@@ -336,4 +346,5 @@ class LightQueryBuilder
 
         return $crud;
     }
+
 }
