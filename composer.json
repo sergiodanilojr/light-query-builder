@@ -26,7 +26,7 @@
     "php": "^8.0",
     "ext-json": "*",
     "ext-pdo": "*",
-    "elephpant/crud":"1.0.4"
+    "elephpant/crud":"1.0.5"
   },
   "autoload": {
     "psr-4": {
