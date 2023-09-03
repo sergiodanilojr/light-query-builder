@@ -336,4 +336,5 @@ class LightQueryBuilder
 
         return $crud;
     }
+
 }
