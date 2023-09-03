@@ -126,19 +126,9 @@ class LightQueryBuilder
     public function select($columns = '*')
     {
         $this->columns = $columns;
-        return $this->toQuery("SELECT {$this->columns} FROM " . self::$table);
+        return $this->toQuery("SELECT {$this->columns} FROM " . $this->table);
     }
 
-    /**
-     * @return int
-     */
-    public function lastId(): int
-    {
-        return Connection::getInstance()
-                ->query('SELECT MAX(id) as maxId FROM ' . self::$table)
-                ->fetch()
-                ->maxId + 1;
-    }
 
     /**
      * @param string $terms
@@ -345,6 +335,11 @@ class LightQueryBuilder
         }
 
         return $crud;
+    }
+
+    protected function raw(string $query)
+    {
+        return CRUD::bootstrap($this->config)->setTable($this->table)->setQuery($query);
     }
 
 }
