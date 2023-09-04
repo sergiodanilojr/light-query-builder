@@ -1,2 +1,8 @@
 /.idea
 vendor/
+.qb/
+public/
+docker/
+docker-compose.yml
+.env
+.db/
