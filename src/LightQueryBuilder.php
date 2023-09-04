@@ -1,6 +1,7 @@
 <?php
 
 namespace ElePHPant;
+use ElePHPant\CRUD;
 
 /**
  * Class LightQueryBuilder
@@ -81,6 +82,7 @@ class LightQueryBuilder
 
     public static function bootstrap(array $config, string $table)
     {
+       // dd($config);
         return (new self($config))->setTable($table);
     }
 
@@ -262,8 +264,6 @@ class LightQueryBuilder
         return $this->crud()->delete($this->terms, $this->params);
     }
 
-
-
     /*-----------------------------------------------------------------------------------*/
 
     /**
@@ -325,9 +325,12 @@ class LightQueryBuilder
      */
     private function crud()
     {
-        $crud = CRUD::bootstrap($this->config)
-            ->setTable($this->table)
-            ->setQuery($this->query);
+        $crud = CRUD::bootstrap(
+            dsn:$this->config['dsn'], 
+            user:$this->config['user'], 
+            password:$this->config['password'], 
+            options: $this->config['options'] ?? null
+        )->setTable($this->table)->setQuery($this->query);
 
         if ($this->params) {
             $crud->setParams($this->params);
@@ -338,7 +341,11 @@ class LightQueryBuilder
 
     protected function raw(string $query)
     {
-        return CRUD::bootstrap($this->config)->setTable($this->table)->setQuery($query);
+        return CRUD::bootstrap(
+            dsn:$this->config['dsn'], 
+            user:$this->config['user'], 
+            password:$this->config['password'], 
+            options: $this->config['options'] ?? null
+        )->setTable($this->table)->setQuery($query);
     }
-
 }

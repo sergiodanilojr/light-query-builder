@@ -25,12 +25,14 @@
   "require": {
     "php": "^8.0",
     "ext-json": "*",
-    "ext-pdo": "*",
-    "elephpant/crud":"1.0.5"
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {
       "ElePHPant\\": "src"
     }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^6.3"
   }
 }
