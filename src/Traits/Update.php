@@ -27,7 +27,7 @@ trait Update
             return ($stmt->rowCount() ?? 1);
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
+           throw new LightQueryBuilderException($exception->getMessage());
         }
     }
 }

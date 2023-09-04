@@ -26,7 +26,7 @@ trait Delete
             return true;
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
+           throw new LightQueryBuilderException($exception->getMessage());
         }
     }
 }
