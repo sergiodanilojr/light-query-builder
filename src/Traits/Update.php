@@ -20,7 +20,7 @@ trait Update
 
             $dataSet = implode(", ", $dataSet);
 
-            $stmt = self::$instance->prepare('UPDATE ' . self::$table . " SET {$dataSet} WHERE {$terms}");
+            $stmt = self::$instance->prepare('UPDATE ' . $this->table . " SET {$dataSet} WHERE {$terms}");
             $stmt->execute($this->filter(array_merge($data, $this->params)));
             return ($stmt->rowCount() ?? 1);
         } catch (\PDOException $exception) {
