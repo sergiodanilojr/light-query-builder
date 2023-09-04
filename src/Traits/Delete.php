@@ -12,7 +12,7 @@ trait Delete
     public function delete(string $terms, ?string $params = null): bool
     {
         try {
-            $stmt = self::$instance->prepare('DELETE FROM ' . self::$table . " WHERE {$terms}");
+            $stmt = self::$instance->prepare('DELETE FROM ' . $this->table . " WHERE {$terms}");
 
             if ($params) {
                 $this->parseParams($params);

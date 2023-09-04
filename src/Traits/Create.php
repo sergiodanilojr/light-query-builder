@@ -14,7 +14,7 @@ trait Create
             $columns = implode(", ", array_keys($data));
             $values = ":" . implode(", :", array_keys($data));
 
-            $stmt = self::$instance->prepare('INSERT INTO ' . self::$table . " ({$columns}) VALUES ({$values})");
+            $stmt = self::$instance->prepare('INSERT INTO ' . $this->table . " ({$columns}) VALUES ({$values})");
             $stmt->execute($this->filter($data));
 
             return self::$instance->lastInsertId();
