@@ -2,6 +2,8 @@
 
 namespace ElePHPant\Traits;
 
+use ElePHPant\Exceptions\LightQueryBuilderException;
+
 trait Read
 {
    
@@ -39,7 +41,7 @@ trait Read
 
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-            return null;
+           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
     }
 }

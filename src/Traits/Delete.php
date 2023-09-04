@@ -2,6 +2,8 @@
 
 namespace ElePHPant\Traits;
 
+use ElePHPant\Exceptions\LightQueryBuilderException;
+
 trait Delete
 {
     /**
@@ -24,7 +26,7 @@ trait Delete
             return true;
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-            return false;
+           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
     }
 }

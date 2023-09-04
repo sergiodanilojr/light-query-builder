@@ -2,6 +2,8 @@
 
 namespace ElePHPant\Traits;
 
+use ElePHPant\Exceptions\LightQueryBuilderException;
+
 trait Update
 {
      /**
@@ -25,7 +27,7 @@ trait Update
             return ($stmt->rowCount() ?? 1);
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-            return null;
+           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace ElePHPant\Traits;
 
+use ElePHPant\Exceptions\LightQueryBuilderException;
+
 trait Create
 {
       /**
@@ -20,7 +22,7 @@ trait Create
             return self::$instance->lastInsertId();
         } catch (\PDOException $exception) {
             $this->fail = $exception;
-            return null;
+           throw new LightQueryBuilderException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
     }
 }
